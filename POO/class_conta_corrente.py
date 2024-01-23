@@ -12,3 +12,18 @@ class ContaCorrente(ContaBancaria):
         self._saldo = saldo
         self.__limite = limite
         print("A conta "+self._nconta+" do Sr(a). "+self._titular+" foi aberta")
+
+    def sacar(self, valor):
+        
+        if(valor > self._saldo+self.__limite):
+            print("Saldo insuficiente :( ")
+        
+        elif(valor <= self._saldo):
+            self._saldo -=valor
+            print("Você realizou um saque de "+str(valor)+", o seu saldo atual é "+str(self._saldo))
+        
+        else:
+            sobra = valor - self._saldo
+            self.__limite-=sobra
+            self._saldo = 0
+            print("O valor sacado é \n"+str(valor)+"O saldo atual é: \n"+str(self._saldo)+"O seu limite atual é: \n"+str(self.__limite))
